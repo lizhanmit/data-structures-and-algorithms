@@ -2,10 +2,10 @@ package com.zhandev.datastructure;
 
 import java.util.Arrays;
 
-public class MyQueue {
+public class MyQueueUsingArray {
 
 	public static void main(String[] args) {
-		MyQueue myQueue = new MyQueue(5);
+		MyQueueUsingArray myQueue = new MyQueueUsingArray(5);
 		
 		System.out.println("Is empty: " + myQueue.isEmpty());
 		System.out.println("Is full: " + myQueue.isFull());
@@ -37,7 +37,7 @@ public class MyQueue {
 	private int front; 
 	private int rear; 
 
-	public MyQueue(int size) {
+	public MyQueueUsingArray(int size) {
 		queueSize = size; 
 		queueArray = new String[size];
 		numOfElements = 0;

@@ -2,10 +2,10 @@ package com.zhandev.datastructure;
 
 import java.util.Arrays;
 
-public class MyStack {
+public class MyStackUsingArray {
 	
 	public static void main(String[] args) {
-		MyStack theStack = new MyStack(5);
+		MyStackUsingArray theStack = new MyStackUsingArray(5);
 		
 		System.out.println("Is empty: " + theStack.isEmpty());
 		System.out.println("Is full: " + theStack.isFull());
@@ -34,7 +34,7 @@ public class MyStack {
 	private int stackSize;
 	private int top;
 	
-	public MyStack(int size) {
+	public MyStackUsingArray(int size) {
 		stackSize = size; 
 		stackArray = new String[size];
 		top = -1;

@@ -2,15 +2,90 @@ package com.zhandev.datastructure.printBinaryTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Print binary tree layer by layer.
  *
  */
 public class PrintBinaryTreeDemo {
+	
+	/*
+	 * parentNode -> leftNode -> rightNode
+	 */
+	public static void preOrder(BinaryTreeNode node) {
+		if (node != null) {
+			System.out.println(node.getValue());
+			preOrder(node.getLeftNode());
+			preOrder(node.getRightNode());
+		}
+	}
+	
+	public static void preOrderNonRecursive(BinaryTreeNode node) {
+		Stack<BinaryTreeNode> stack = new Stack<>();
+		while (node != null || !stack.isEmpty()) {
+			while (node != null) {
+				System.out.println(node.getValue());
+				stack.push(node);
+				node = node.getLeftNode();
+			}
+			
+			if (!stack.isEmpty()) {
+				node = stack.pop();
+				node = node.getRightNode();
+			}
+		}
+	}
+	
+	
+	/*
+	 * leftNode -> parentNode -> rightNode
+	 */
+	public static void inOrder(BinaryTreeNode node) {
+		if (node != null) {
+			inOrder(node.getLeftNode());
+			System.out.println(node.getValue());
+			inOrder(node.getRightNode());
+		}
+	}
+	
+	
+	public static void inOrderNonRecursive(BinaryTreeNode node) {
+		Stack<BinaryTreeNode> stack = new Stack<>();
+		while (node != null || !stack.isEmpty()) {
+			while (node != null) {
+				stack.push(node);
+				node = node.getLeftNode();
+			}
+			
+			if (!stack.isEmpty()) {
+				node = stack.pop();
+				System.out.println(node.getValue());
+				node = node.getRightNode();
+			}
+		}
+	}
 
 	
-	public static void printBinaryTree(BinaryTreeNode root) {
+	/*
+	 * leftNode -> rightNode -> parentNode
+	 */
+	public static void postOrder(BinaryTreeNode node) {
+		if (node != null) {
+			postOrder(node.getLeftNode());
+			postOrder(node.getRightNode());
+			System.out.println(node.getValue());
+		}
+	}
+	
+	public static void postOrderNonRecursive(BinaryTreeNode node) {
+		
+	}
+	
+	/*
+	 * level by level
+	 */
+	public static void levelOrder(BinaryTreeNode root) {
 		// used to store nodes
 		Queue<BinaryTreeNode> queue = new LinkedList<>();
 		
@@ -41,6 +116,30 @@ public class PrintBinaryTreeDemo {
 		}
 	}
 	
+	public static void levelOrder2(BinaryTreeNode node) {
+		if (node == null) {
+			return;
+		}
+		
+		Queue<BinaryTreeNode> queue = new LinkedList<>();
+		queue.add(node);
+		
+		// enqueue the node in the first loop
+		// dequeue and print the node in the next loop
+		while (!queue.isEmpty()) {
+			BinaryTreeNode currentNode = queue.poll();
+			System.out.println(currentNode.getValue());
+			
+			if (currentNode.hasLeftNode()) {
+				queue.add(currentNode.getLeftNode());
+			}
+			
+			if (currentNode.hasRightNode()) {
+				queue.add(currentNode.getRightNode());
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		BinaryTreeNode rootNode = new BinaryTreeNode("root");
 		BinaryTreeNode left11 = new BinaryTreeNode("left11");
@@ -57,6 +156,28 @@ public class PrintBinaryTreeDemo {
 		right11.setLeftNode(left22);
 		right11.setRightNode(right22);
 		
-		printBinaryTree(rootNode);
+		System.out.println("=== levelOrder ===");
+		levelOrder(rootNode);
+		
+		System.out.println("=== levelOrder2 ===");
+		levelOrder2(rootNode);
+		
+		System.out.println("=== preOrder ===");
+		preOrder(rootNode);
+		
+		System.out.println("=== preOrderNonRecursive ===");
+		preOrderNonRecursive(rootNode);
+		
+		System.out.println("=== inOrder ===");
+		inOrder(rootNode);
+		
+		System.out.println("=== inOrderNonRecursive ===");
+		inOrderNonRecursive(rootNode);
+		
+		System.out.println("=== postOrder ===");
+		postOrder(rootNode);
+		
+		System.out.println("=== postOrderNonRecursive ===");
+		postOrderNonRecursive(rootNode);
 	}
 }
