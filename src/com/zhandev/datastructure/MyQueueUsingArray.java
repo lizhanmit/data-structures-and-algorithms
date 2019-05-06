@@ -2,6 +2,10 @@ package com.zhandev.datastructure;
 
 import java.util.Arrays;
 
+/**
+ * not good
+ * because it is not circular
+ */
 public class MyQueueUsingArray {
 
 	public static void main(String[] args) {

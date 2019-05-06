@@ -2,6 +2,9 @@ package com.zhandev.datastructure;
 
 import java.util.LinkedList;
 
+/**
+ * more expensive than array-based implementation
+ */
 public class MyQueueUsingLinkedList<E> {
 
 	private LinkedList<E> linkedList = new LinkedList<>();
