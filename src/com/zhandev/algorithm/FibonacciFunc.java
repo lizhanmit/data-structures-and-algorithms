@@ -9,6 +9,7 @@ public class FibonacciFunc {
 	/*
 	 * time complexity: O(2^n)
 	 * If n is big, performance is poor.
+	 * not good
 	 */
 	public static long fib(int n) throws Exception {
 		if (n < 1) {

@@ -4,10 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * Print binary tree layer by layer.
- *
- */
 public class PrintBinaryTreeDemo {
 	
 	/*
@@ -86,6 +82,10 @@ public class PrintBinaryTreeDemo {
 	 * level by level
 	 */
 	public static void levelOrder(BinaryTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		
 		// used to store nodes
 		Queue<BinaryTreeNode> queue = new LinkedList<>();
 		

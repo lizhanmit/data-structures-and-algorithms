@@ -36,6 +36,8 @@ public class DoublyLinkedList<E> {
 		}
 	}
 	
+	// NOTE here, different with singly linked list
+	// using header and trailer sentinel instead of head and tail
 	private Node<E> header;  // header sentinel
 	private Node<E> trailer;  // trailer sentinel
 	private int size = 0;
