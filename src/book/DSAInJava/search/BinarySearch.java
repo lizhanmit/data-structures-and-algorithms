@@ -1,13 +1,30 @@
 package book.DSAInJava.search;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 public class BinarySearch {
 
+	/**
+	 * @param data
+	 * @param target
+	 * @param fromIndex
+	 * @param toIndex
+	 * @return  index of the target
+	 */
 	public static int binarySearchRecursively(int[] data, int target, int fromIndex, int toIndex) {
 		if (data[0] > target || data[data.length - 1] < target || fromIndex > toIndex) {
 			return -1;  // if can find the target, return -1 
 		}
 		
-		int mid = (fromIndex + toIndex) / 2;
+		// if the values of fromIndex and toIndex are very big, may overflow
+		//int mid = (fromIndex + toIndex) / 2;
+		// better way 
+		//int mid = (toIndex - fromIndex) / 2 + fromIndex;
+		// mathematically, >> 1 is the same as / 2, but better performance 
+		// better way
+		int mid = ((toIndex - fromIndex) >> 1) + fromIndex;
 		
 		if (target == data[mid]) {
 			return mid;
@@ -20,6 +37,11 @@ public class BinarySearch {
 		return binarySearchRecursively(data, target, mid + 1, toIndex);
 	}
 	
+	/**
+	 * @param data
+	 * @param target
+	 * @return  index of the target
+	 */
 	public static int binarySearchLoop(int[] data, int target) {
 		if (data == null || data[0] > target || data[data.length - 1] < target) {
 			return -1;
@@ -30,7 +52,14 @@ public class BinarySearch {
 		int mid = 0;
 		
 		while (fromIndex <= toIndex) {
-			mid = (fromIndex + toIndex) / 2;
+			// if the values of fromIndex and toIndex are very big, may overflow
+			//mid = (fromIndex + toIndex) / 2;
+			// better way 
+			//mid = (toIndex - fromIndex) / 2 + fromIndex;
+			// mathematically, >> 1 is the same as / 2, but better performance 
+			// better way
+			mid = ((toIndex - fromIndex) >> 1) + fromIndex;
+			
 			if (data[mid] == target) {
 				return mid;
 			}
@@ -44,9 +73,16 @@ public class BinarySearch {
 		return -1;
 	}
 	
-	public static void main(String[] args) {
+	@Test
+	public void testBinarySearchRecursively() {
 		int[] data = {1,2,3,4,5,6};
-		System.out.println(binarySearchRecursively(data, 5, 0, data.length - 1));
-		System.out.println(binarySearchLoop(data, 5));
+		assertEquals(binarySearchRecursively(data, 5, 0, data.length - 1), 4);;
+		
+	}
+	
+	@Test
+	public void testBinarySearchLoop() {
+		int[] data = {1,2,3,4,5,6};
+		assertEquals(binarySearchLoop(data, 5), 4);
 	}
 }
