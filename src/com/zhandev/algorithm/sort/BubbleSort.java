@@ -1,4 +1,4 @@
-package com.zhandev.algorithm;
+package com.zhandev.algorithm.sort;
 
 import java.util.Arrays;
 
@@ -43,8 +43,8 @@ public class BubbleSort {
 		}
 	}
 	
-	public static void bubbleSortAnother(int[] arr) {
-		if (arr == null || arr.length == 0) return;
+	public static void bubbleSortOptimized2(int[] arr) {
+		if (arr == null || arr.length <= 1) return;
 		
 		boolean isSorted = true;
 		

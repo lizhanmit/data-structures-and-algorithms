@@ -1,4 +1,4 @@
-package com.zhandev.algorithm;
+package com.zhandev.algorithm.sort;
 import java.util.Arrays;
 
 public class ArraySorting {
