@@ -40,7 +40,7 @@ public class CircularlyLinkedList<E> {
 		return size == 0;
 	}
 	
-	public E firrst() {
+	public E first() {
 		if (size == 0) {
 			return null;
 		}
