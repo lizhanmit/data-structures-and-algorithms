@@ -11,6 +11,7 @@
     - [Hash Table](#hash-table)
     - [Trees](#trees)
       - [Max Depth of Trees](#max-depth-of-trees)
+      - [Tree Traversal](#tree-traversal)
     - [Heaps](#heaps)
     - [Graphs](#graphs)
       - [邻接矩阵](#邻接矩阵)
@@ -18,7 +19,6 @@
       - [逆邻接表](#逆邻接表)
       - [十字链表](#十字链表)
   - [Algorithms](#algorithms)
-    - [Sorting](#sorting)
   - [Q & A](#q--a)
     - [Linked List](#linked-list)
     - [Stack](#stack)
@@ -241,6 +241,29 @@ public int getMaxDepth(Node node) {
 
 O(N) time, O(N) space.
 
+#### Tree Traversal
+
+Two types: 
+
+- DFS
+  - in-order
+  - pre-order
+  - post-order
+- BFS - level-order
+
+![tree-traversal.png](img/tree-traversal.png)
+
+Pre-order: 
+
+1. Create a stack.
+2. Push root into the stack.
+3. While the stack is not empty,
+   1. Pop the stack. Print value of the popped node. (**NOTE**: Print the value when popping.)
+   2. If the right node of the popped node is not null, push it into the stack.
+   3. If the left node of the popped node is not null, push it into the stack.
+
+O(n) time, O(n) space
+
 ### Heaps
 
 可以直接用数组来表示一个堆。
@@ -292,11 +315,6 @@ O(N) time, O(N) space.
 ---
 
 ## Algorithms 
-
-### Sorting
-
-
-
 
 
 ---
