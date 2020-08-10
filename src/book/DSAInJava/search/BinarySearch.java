@@ -7,6 +7,8 @@ import org.junit.Test;
 public class BinarySearch {
 
 	/**
+	 * O(log n) time
+	 * 
 	 * @param data
 	 * @param target
 	 * @param fromIndex
@@ -14,8 +16,8 @@ public class BinarySearch {
 	 * @return  index of the target
 	 */
 	public static int binarySearchRecursively(int[] data, int target, int fromIndex, int toIndex) {
-		if (data[0] > target || data[data.length - 1] < target || fromIndex > toIndex) {
-			return -1;  // if can find the target, return -1 
+		if (data == null || data.length == 0 || data[0] > target || data[data.length - 1] < target || fromIndex > toIndex) {
+			return -1;  // if cannot find the target, return -1 
 		}
 		
 		// if the values of fromIndex and toIndex are very big, may overflow
@@ -38,12 +40,14 @@ public class BinarySearch {
 	}
 	
 	/**
+	 * O(log n) time
+	 * 
 	 * @param data
 	 * @param target
 	 * @return  index of the target
 	 */
 	public static int binarySearchLoop(int[] data, int target) {
-		if (data == null || data[0] > target || data[data.length - 1] < target) {
+		if (data == null || data.length == 0 || data[0] > target || data[data.length - 1] < target) {
 			return -1;
 		}
 		
