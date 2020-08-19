@@ -20,10 +20,11 @@
       - [十字链表](#十字链表)
   - [Algorithms](#algorithms)
   - [Q & A](#q--a)
-    - [Find Missing Integer](#find-missing-integer)
     - [Linked List](#linked-list)
     - [Stack](#stack)
     - [Hash Table](#hash-table-1)
+    - [Misc](#misc)
+  - [Data Structures and Algorithms Practice Code](#data-structures-and-algorithms-practice-code)
   - [Experience](#experience)
 
 ---
@@ -322,80 +323,6 @@ O(n) time, O(n) space
 
 ## Q & A
 
-### Find Missing Integer
-
-Q: You are given a list of n-1 integers and these integers are in the range of 1 to n. There are no duplicates in list. One of the integers is missing in the list. Write an efficient code to find the missing integer.   
-
-A1: Use sum formula.
-
-1. Get the sum of numbers: total = n*(n+1)/2
-2. Subtract all the numbers from sum and you will get the missing number.
-
-```java
-// Java program to find missing Number
- 
-class Main
-{
-    // Function to ind missing number
-    static int getMissingNo (int a[], int n)
-    {
-        int i, total;
-        total  = (n+1)*(n+2)/2;   
-        for ( i = 0; i< n; i++)
-           total -= a[i];
-        return total;
-    }
-      
-    /* program to test above function */
-    public static void main(String args[])
-    {
-        int a[] = {1,2,4,5,6};
-        int miss = getMissingNo(a,5);
-        System.out.println(miss);   
-    }
-}
-```
-
-A2: Use XOR. 
-
-1. XOR all the array elements, let the result of XOR be X1.
-2. XOR all numbers from 1 to n, let XOR be X2.
-3. XOR of X1 and X2 gives the missing number.
-
-```java
-// Java program to find missing Number
-// using xor
-class Main
-{
-    // Function to find missing number
-    static int getMissingNo (int a[], int n)
-    {
-        int x1 = a[0]; 
-        int x2 = 1; 
-         
-        /* For xor of all the elements 
-           in array */
-        for (int i = 1; i < n; i++)
-            x1 = x1 ^ a[i];
-                 
-        /* For xor of all the elements 
-           from 1 to n+1 */        
-        for (int i = 2; i <= n+1; i++)
-            x2 = x2 ^ i;         
-         
-        return (x1 ^ x2);
-    }
-      
-    /* program to test above function */
-    public static void main(String args[])
-    {
-        int a[] = {1,2,4,5,6};
-        int miss = getMissingNo(a,5);
-        System.out.println(miss);
-    }
-}
-```
-
 ### Linked List
 
 Q: Detect cycle in a linked list.
@@ -509,9 +436,130 @@ K: Length of the longest string in the array.
 
 O(NK) time, O(NK) space.
 
+### Misc
+
+Q: Find missing integer. You are given a list of n-1 integers and these integers are in the range of 1 to n. There are no duplicates in list. One of the integers is missing in the list. Write an efficient code to find the missing integer.   
+
+A1: Use sum formula.
+
+1. Get the sum of numbers: total = n*(n+1)/2
+2. Subtract all the numbers from sum and you will get the missing number.
+
+```java
+// Java program to find missing Number
+ 
+class Main
+{
+    // Function to ind missing number
+    static int getMissingNo (int a[], int n)
+    {
+        int i, total;
+        total  = (n+1)*(n+2)/2;   
+        for ( i = 0; i< n; i++)
+           total -= a[i];
+        return total;
+    }
+      
+    /* program to test above function */
+    public static void main(String args[])
+    {
+        int a[] = {1,2,4,5,6};
+        int miss = getMissingNo(a,5);
+        System.out.println(miss);   
+    }
+}
+```
+
+A2: Use XOR. 
+
+1. XOR all the array elements, let the result of XOR be X1.
+2. XOR all numbers from 1 to n, let XOR be X2.
+3. XOR of X1 and X2 gives the missing number.
+
+```java
+// Java program to find missing Number
+// using xor
+class Main
+{
+    // Function to find missing number
+    static int getMissingNo (int a[], int n)
+    {
+        int x1 = a[0]; 
+        int x2 = 1; 
+         
+        /* For xor of all the elements 
+           in array */
+        for (int i = 1; i < n; i++)
+            x1 = x1 ^ a[i];
+                 
+        /* For xor of all the elements 
+           from 1 to n+1 */        
+        for (int i = 2; i <= n+1; i++)
+            x2 = x2 ^ i;         
+         
+        return (x1 ^ x2);
+    }
+      
+    /* program to test above function */
+    public static void main(String args[])
+    {
+        int a[] = {1,2,4,5,6};
+        int miss = getMissingNo(a,5);
+        System.out.println(miss);
+    }
+}
+```
+
+Q: 只出现一次的数字。给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+
+A1: 异或 xor / ^
+
+异或性质：
+
+- 同为0，异为1
+- 0 ^ a = a
+- 交换律、结合律
+
+Traverse the array. Xor all of the elements. Then the result is the number to find.
+
+O(n) time, O(1) space
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        if (nums.length == 1) return nums[0];
+
+        int result = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            result ^= nums[i];
+        }
+
+        return result;
+    }
+}
+```
+
+A2: Use HashTable.
+
+1. Traverse the array, and save numbers as the key and occurrence time as value in a HashTable. 
+2. Traverse the HashTable, find the key with value == 1.
+
+O(n) time, O(n) space
+
+A3: Use Set.
+
+使用集合存储数字。遍历数组中的每个数字，如果集合中没有该数字，则将该数字加入集合，如果集合中已经有该数字，则将该数字从集合中删除，最后剩下的数字就是只出现一次的数字。
+
+A4: Use Set and math. 
+
+1. Put all array elements in a set. 
+2. The number to find = sum(elements in the set) x 2 - sum(elements in the array). 
+
+O(n) time, O(n) space
+
 ---
 
-Data Structures and Algorithms practice code.
+## Data Structures and Algorithms Practice Code
 
 Practice sources: 
 
