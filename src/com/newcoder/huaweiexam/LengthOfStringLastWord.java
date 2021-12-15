@@ -28,7 +28,7 @@ public class LengthOfStringLastWord {
 	// O(n) time
 	private static int lengthOfStringLastWord2(String str) {
 		int index = -1;  // this must be -1
-		for (int i = str.length() - 1; i >= 0 ; i--) {
+		for (int i = str.length() - 1; i >= 0; i--) {
 			if (str.charAt(i) == ' ') {
 				index = i;
 				break;
