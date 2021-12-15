@@ -25,6 +25,7 @@ public class ReverseString {
         System.out.println(reversedStr);
     }
 
+    // two indexes
     private static String reverseStr2(String str) {
         char[] charArr = str.toCharArray();
 
