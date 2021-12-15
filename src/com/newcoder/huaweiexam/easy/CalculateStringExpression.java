@@ -1,4 +1,4 @@
-package com.newcoder.huaweiexam;
+package com.newcoder.huaweiexam.easy;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

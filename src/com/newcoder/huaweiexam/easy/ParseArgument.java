@@ -1,4 +1,4 @@
-package com.newcoder.huaweiexam;
+package com.newcoder.huaweiexam.easy;
 
 import java.util.ArrayList;
 import java.util.List;

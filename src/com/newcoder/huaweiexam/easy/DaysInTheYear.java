@@ -1,4 +1,4 @@
-package com.newcoder.huaweiexam;
+package com.newcoder.huaweiexam.easy;
 
 import java.util.Calendar;
 import java.util.Scanner;
