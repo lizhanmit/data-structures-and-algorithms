@@ -1,4 +1,4 @@
-package com.newcoder.huaweiexam.easy;
+package com.newcoder.huaweiexam.hard;
 
 import java.util.Scanner;
 
