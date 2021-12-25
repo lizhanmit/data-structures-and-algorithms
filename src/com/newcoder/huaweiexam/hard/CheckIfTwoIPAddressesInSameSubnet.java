@@ -170,7 +170,7 @@ public class CheckIfTwoIPAddressesInSameSubnet {
         return strArr;
     }
 
-    // it is trick to check the validity of subnet
+    // it is tricky to check the validity of subnet
     private static boolean isValidSubnet(String str) {
         if (!isValidIP(str)) {
             return false;
