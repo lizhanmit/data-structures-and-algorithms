@@ -38,12 +38,10 @@ public class RoundFloatToInt {
         Scanner in = new Scanner(System.in);
 
         float f = in.nextFloat();
-
         int i = Math.round(f);
+        System.out.println(i);
 
-        //System.out.println(i);
-
-        System.out.println(f - (int) f >= 0.5 ? (int) (f + 1) : (int) f);
-
+        // or
+        //System.out.println(f - (int) f >= 0.5 ? (int) (f + 1) : (int) f);
     }
 }
