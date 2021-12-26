@@ -19,7 +19,7 @@ import java.util.Scanner;
  *
  * or
  *
- * 最长递增子序列
+ * 最长递增子序列  LongestIncrementalSubstring
  */
 public class Redraiment {
 
