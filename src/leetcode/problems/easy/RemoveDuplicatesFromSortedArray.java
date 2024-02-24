@@ -58,8 +58,7 @@ public class RemoveDuplicatesFromSortedArray {
     }
 
     /**
-     * Fast and slow index
-     * Time: O(n) -
+     * Time: O(n) - one for loop
      * Space: O(1) - in place
      *
      * @param nums
